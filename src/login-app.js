@@ -30,10 +30,10 @@ class LoginApp extends PolymerElement {
             <!-- Login Form Start --->  
             <iron-form>  
                 <form id="myForm" is = "iron-form" method="post" action="/form/handler" tabindex="0">
-                    <paper-input role="Enter Username" id="username" label="Enter Username" required 
+                    <paper-input role="Enter Username" id="username" char-counter maxlength="10" label="Enter Username" required 
                     auto-validate error-message="Username must be filled out"></paper-input>
 
-                    <paper-input role="Enter Password" type="password" id="password" label="Enter Password" 
+                    <paper-input role="Enter Password" type="password" id="password" char-counter maxlength="10" label="Enter Password" 
                     required auto-validate error-message="Password must be filled out"></paper-input>
 
                     <input id="submitForValidation" role="Submit" type="submit" required 
@@ -56,6 +56,7 @@ class LoginApp extends PolymerElement {
         localStorage.setItem("username", user);
         localStorage.setItem("password", pass);
 
+         
         if (user == "admin" && pass == "admin") {
              window.location.href = "/dashboard";
             //this.set('route.path', '/dashboard');

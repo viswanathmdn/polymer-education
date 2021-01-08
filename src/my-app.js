@@ -161,7 +161,7 @@ class MainApp extends PolymerElement {
                 <!-- Iron Pages Start -->
                 <iron-pages selected="[[page]]" attr-for-selected="name" role="main page">
                   <login-app name="login"></login-app>
-                  <dashboard-app name="dashboard"></dashboard-app>
+                  <my-app name="dashboard"></my-app>
                   <my-technical name="technical"></my-technical>
                   <non-technical name="non-technical"></non-technical>
                   <my-view404 name="view404"></my-view404>
