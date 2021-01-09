@@ -18,6 +18,7 @@ import './my-icons.js';
 
 
 
+
 // Set Polymer's root path to the same value we passed to our service worker
 // in `index.html`.
 setRootPath(MyAppGlobals.rootPath);
@@ -27,88 +28,9 @@ class MainApp extends PolymerElement {
     static get template() {
         return html`
       <style include="shared-styles">
-        :host {
-          --app-primary-color: #673AB7;
-          --app-secondary-color: black;
-          display: block;
-        }
-        * {
-            box-sizing: border-box;
-          }
-          
-          /* Style the body */
-          body {
-            font-family: Arial;
-            margin: 0;
-          }
-          
-          /* Header/logo Title */
-          .header {
-            
-          }
-          
-          /* Style the top navigation bar */
-          .navbar {
-            display: flex;
-            background-color: #333;
-          }
-          
-          /* Style the navigation bar links */
-          .navbar a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-          }
-          
-          /* Change color on hover */
-          .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-          }
-          
-          /* Column container */
-          .row {  
-            display: flex;
-            flex-wrap: wrap;
-          }
-          
-          /* Create two unequal columns that sits next to each other */
-          /* Sidebar/left column */
-          .side {
-            flex: 30%;
-            background-color: #f1f1f1;
-            padding: 20px;
-          }
-          
-          /* Main column */
-          .main {
-            flex: 70%;
-            background-color: white;
-            padding: 20px;
-          }
-          
-          /* Fake image, just for this example */
-          .fakeimg {
-            background-color: #aaa;
-            width: 100%;
-            padding: 20px;
-          }
-          
-          /* Footer */
-          .footer {
-            padding: 20px;
-            text-align: center;
-            background: #ddd;
-          }
-          
-          /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-          @media screen and (max-width: 700px) {
-            .row, .navbar {   
-              flex-direction: column;
-            }
-          }
+        
       </style>
+      
 
       <!--- Applocation component start -->
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
@@ -124,8 +46,8 @@ class MainApp extends PolymerElement {
           <!-- Naviigation Start -->
           <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
             
-              <app-toolbar><div style="color:white">
-                <i style="font-size:30px;padding:46px">Education</i>
+              <app-toolbar><div >
+                <i id="edu">Education</i>
               </div>
               </app-toolbar>
             
@@ -175,13 +97,13 @@ class MainApp extends PolymerElement {
                 <div id="paperCard">
                 
                 <!-- Header -->
-                <div style="background:blue;padding:10px">
-                  <h1 style="text-align:center;color:white">Education </h1>
+                <div class="edud">
+                  <h1 class="edud" >Education </h1>
                 </div>
 
                
                 <div class="header">
-                <img src="images/1.jfif" style="width:100%;height:400px"
+                <img src="images/1.jfif"  style="width:100%;height:400px">
                 </div>
 
 
@@ -206,7 +128,7 @@ class MainApp extends PolymerElement {
                     <h2>Non-Technical </h2>
                     <h5>Title description, Sep 2, 2017</h5>
                     <div>
-                    <img src="images/nont.png" style="width:100%;height:300px">
+                    <img src="images/nont.png"  style="width:100%;height:300px">
                     </div>
                     <p >Technical skills are the abilities and knowledge needed to perform specific tasks. They
                       are
@@ -238,6 +160,7 @@ class MainApp extends PolymerElement {
     `;
     }
 
+    // This is an Properites section
     static get properties() {
         return {
             page: {
@@ -270,13 +193,7 @@ class MainApp extends PolymerElement {
             this.page = 'view404';
         }
 
-        if (!this.$.drawer.persistent) {
-            this.$.drawer.close();
-        }
-
-        if (page = 'login') { } else {
-            this.$.drawer.style.display = "block";
-        }
+       
     }
 
     _pageChanged(page) {
@@ -310,10 +227,14 @@ class MainApp extends PolymerElement {
 
             case 'view404':
                 import('./my-view404.js');
+                this.$.drawer.style.display = "none";
+                this.$.appheader.style.display = "none";
+                this.$.paperCard.style.display = "none";
                 break;
         }
     }
 
 }
 
+//This syntax using register the component to the web browser 
 window.customElements.define('main-app', MainApp);

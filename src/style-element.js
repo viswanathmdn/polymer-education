@@ -175,6 +175,7 @@ footer {
     outline: none;
 }
 
+
    </style>
  </template>`;
 styleElement.register('style-element');

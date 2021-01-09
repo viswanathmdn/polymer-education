@@ -12,7 +12,8 @@ class LoginApp extends PolymerElement {
       <style include="style-element">
       
       </style>
-      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      
+      
 
       <!--- Applocation component start -->
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
@@ -27,6 +28,7 @@ class LoginApp extends PolymerElement {
         <div class="login-area" style="margin-left:10%" >
             <!-- Logo Here --->
             <h1><i style="color:blue;">Login-Here</i></h1>
+           
             <!-- Login Form Start --->  
             <iron-form>  
                 <form id="myForm" is = "iron-form" method="post" action="/form/handler" tabindex="0">
