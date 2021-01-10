@@ -230,7 +230,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         background-color:blue;
        color:white;
         text-align:center;
-        padding:10px;
+        padding:3px;
       }
 
      

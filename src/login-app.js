@@ -9,6 +9,8 @@ class LoginApp extends PolymerElement {
 
     static get template() {
             return html `
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
       <style include="style-element">
       
       </style>
@@ -28,6 +30,11 @@ class LoginApp extends PolymerElement {
         <div class="login-area" style="margin-left:10%" >
             <!-- Logo Here --->
             <h1><i style="color:blue;">Login-Here</i></h1>
+            
+            <!-- Validation Message Here -->
+            <div >
+              <h3 id="nvalid"></h3>
+            </div>
            
             <!-- Login Form Start --->  
             <iron-form>  
@@ -40,7 +47,7 @@ class LoginApp extends PolymerElement {
 
                     <input id="submitForValidation" role="Submit" type="submit" required 
                     Label="Enter the Valid Username or Password" value="Login" on-click="userform" class="btn">
-                    <a href="#">Forgot Username/Password</a>
+                    <a href="">Forgot Password</a>
                 </form>
             </iron-form>
             <!-- Login Form End --->       
@@ -61,9 +68,14 @@ class LoginApp extends PolymerElement {
 
          
         if (user == "admin" && pass == "admin") {
+         
              window.location.href = "/dashboard";
             /** this.set('route.path', '/dashboard'); */
             return user;
+            
+        }else{
+            this.$.nvalid.innerHTML = " Invalid Username and password";
+            this.$.nvalid.style.color="red";
             
         }
     };
