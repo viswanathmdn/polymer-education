@@ -51,7 +51,8 @@ class LoginApp extends PolymerElement {
 
     `;
         }
-        // Get values on Submit and checking the validation
+        
+        /** Get values on Submit and checking the validation */
     userform() {
         var user = this.$.username.value;
         var pass = this.$.password.value;
@@ -61,7 +62,7 @@ class LoginApp extends PolymerElement {
          
         if (user == "admin" && pass == "admin") {
              window.location.href = "/dashboard";
-            //this.set('route.path', '/dashboard');
+            /** this.set('route.path', '/dashboard'); */
             return user;
             
         }

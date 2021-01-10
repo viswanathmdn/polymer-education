@@ -13,14 +13,16 @@ import '@polymer/iron-selector/iron-selector.js';
 import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/paper-card/paper-card.js';
+import '@polymer/iron-ajax/iron-ajax.js';
+
 import './shared-styles.js';
 import './my-icons.js';
 
 
 
 
-// Set Polymer's root path to the same value we passed to our service worker
-// in `index.html`.
+/**  Set Polymer's root path to the same value we passed to our service worker */
+
 setRootPath(MyAppGlobals.rootPath);
 
 
@@ -57,7 +59,7 @@ class MainApp extends PolymerElement {
                 <a name="dashboard" role="Dashboard" href="[[rootPath]]dashboard"> Dashboard</a>
                 <a name="technical" role="Technical" href="[[rootPath]]technical"> Technical</a>
                 <a name="non-technical" role="Non Technical" href="[[rootPath]]non-technical"> Non-Technical</a>
-             
+                <a name="data" role="Student List" href="[[rootPath]]data"> Student-List</a>
                 <a name="login" href="[[rootPath]]login" role="Logout">Logout</a>
               </iron-selector>
               <!-- Iron Selecctor End -->
@@ -87,6 +89,7 @@ class MainApp extends PolymerElement {
                   <my-technical name="technical"></my-technical>
                   <non-technical name="non-technical"></non-technical>
                   <my-view404 name="view404"></my-view404>
+                  <student-list name="data"></student-list>
                 </iron-pages>
                 <!-- Iron Pages End -->
 
@@ -140,6 +143,8 @@ class MainApp extends PolymerElement {
                 </div>
                 </div>
 
+              
+
                 <!-- Footer -->
                 <div class="footer">
                 <p>2020 - 2021 Copyrights by <a href="#">Viswa</a>. Designed & Maintanined by <a href="#">Viswa</a></p>
@@ -160,13 +165,13 @@ class MainApp extends PolymerElement {
     `;
     }
 
-    // This is an Properites section
+    /**  This is an Properites section */
     static get properties() {
         return {
             page: {
                 type: String,
                 reflectToAttribute: true,
-                observer: '_pageChanged' // _pageChanged to import the page.
+                observer: '_pageChanged' /** _pageChanged to import the page. */
             },
             routeData: Object,
             subroute: Object
@@ -175,19 +180,19 @@ class MainApp extends PolymerElement {
 
     static get observers() {
         return [
-            '_routePageChanged(routeData.page)' //_routePageChanged to check the route data changes
+            '_routePageChanged(routeData.page)' /** _routePageChanged to check the route data changes */
         ];
     }
 
     _routePageChanged(page) {
-        // Show the corresponding page according to the route.
-        //
-        // If no page was found in the route data, page will be an empty string.
-        // Show 'login' in that case. And if the page doesn't exist, show 'view404'.
+        /**  Show the corresponding page according to the route.
+        
+         If no page was found in the route data, page will be an empty string.
+         Show 'login' in that case. And if the page doesn't exist, show 'view404'. */
 
         if (!page) {
             this.page = 'login';
-        } else if (['login', 'dashboard', 'technical', 'non-technical'].indexOf(page) !== -1) {
+        } else if (['login', 'dashboard', 'technical', 'non-technical','data'].indexOf(page) !== -1) {
             this.page = page;
         } else {
             this.page = 'view404';
@@ -197,10 +202,10 @@ class MainApp extends PolymerElement {
     }
 
     _pageChanged(page) {
-        // Import the page component on demand.
-        //
-        // Note: `polymer build` doesn't like string concatenation in the import
-        // statement, so break it up.
+        /**  Import the page component on demand.
+        
+         Note: `polymer build` doesn't like string concatenation in the import
+         statement, so break it up. */
         switch (page) {
 
             case 'login':
@@ -225,6 +230,12 @@ class MainApp extends PolymerElement {
 
                 break;
 
+            case 'data':
+              import('./student-list.js');
+             
+              this.$.paperCard.style.display = "none";
+              break;
+
             case 'view404':
                 import('./my-view404.js');
                 this.$.drawer.style.display = "none";
@@ -234,7 +245,9 @@ class MainApp extends PolymerElement {
         }
     }
 
+ 
+
 }
 
-//This syntax using register the component to the web browser 
+/** This syntax using register the component to the web browser */
 window.customElements.define('main-app', MainApp);

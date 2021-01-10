@@ -78,6 +78,53 @@
     text-align: center;
     background: #ddd;
   }
+   /* Student-List */
+   :host {
+    display: block;
+    }
+
+    .card {
+        margin: 10px;
+        padding: 10px;
+        color: white;
+        border-radius: 5px;
+        background-color: grey;
+        max-width: 600px;
+        min-width: 600px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        display: flex;
+      }
+      .div_student_list {
+        padding-right: 20px;
+      }
+      .div_hotel_address h3 {
+        color: #006b80;
+        margin-top: 0px;
+      }
+      .div_student_data{
+          font-size: 12px;
+          padding-left: 15px;
+          width: 300px;
+      }
+      .detailsbutton {
+        width: 80px;
+        margin-left: 10px;
+        float: right;
+        height: 25px; 
+        margin-top: 5px;
+        background-color: #68d09d; 
+        color: #3c3b3b;
+        font-size: 12px;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    }
+    .hotelimg{
+      max-width:200px;
+    }
+    #titv{
+      color:cyan;
+    }
+   
+ 
   
   /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 700px) {
