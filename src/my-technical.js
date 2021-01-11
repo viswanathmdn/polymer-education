@@ -45,7 +45,8 @@ class MyTechnical extends PolymerElement {
     are
     practical, and often relate to mechanical, information technology, mathematical, or scientific tasks.
     Some examples include knowledge of programming languages, design programs, mechanical equipment, or tools
-  </p> <p><a href="">more...</a></p>
+  </p> <p><a href="https://www.thebalancecareers.com/technical-skills-list-2063775#:~:text=Technical%20skills%20are%20the%20abilities,%2C%20mechanical%20equipment%2C%20or%20tools." 
+  target="_blank">more...</a></p>
     </div>
 </div>
 

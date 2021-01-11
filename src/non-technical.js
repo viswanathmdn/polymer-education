@@ -45,7 +45,8 @@ class NonTechnical extends PolymerElement {
     are
     practical, and often relate to mechanical, information technology, mathematical, or scientific tasks.
     Some examples include knowledge of programming languages, design programs, mechanical equipment, or tools
-  </p>  <p><a href="">more...</a></p>
+  </p>  <p><a target="_blank" href="https://www.arpansa.gov.au/regulation-and-licensing/safety-security-transport/holistic-safety/non-technical-skills#:~:text=Non%2DTechnical%20Skills%20('NTS,%3B%20and%20situation%2Dawareness%20skills.&text=However%2C%20they%20complement%20these%20technical,them%20more%20efficient%20and%20effective.">
+  more...</a></p>
     </div>
 </div>
 
