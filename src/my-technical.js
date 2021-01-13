@@ -35,7 +35,7 @@ class MyTechnical extends PolymerElement {
 <div class="row">
  
   <div class="main">
-    <h2>Technical Skills</h2>
+    <h2>[[skill]]</h2>
     <h5>Title description, Dec 7, 2017</h5>
     <div>
     <img src="images/tech.jpeg" style="width:100%;height:300px">

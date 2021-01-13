@@ -27,8 +27,9 @@ body, html {
     margin-top: 25vh !important;
     padding: 30px;
     width: 100%;
+    
     max-width: 280px;
-    background: #fff;
+    background: aqua;
     border-radius: 15px;
     box-shadow: 0 0 5px #ccc;
     text-align:center;
@@ -38,11 +39,12 @@ body, html {
     border-radius: 10px;
     border: 0px;
     background: #e7e7e7;
-    color: #555;
+    color: #fff;
     padding: 15px;
     margin: 10px 0px;
 
 }
+
 .login-area .btn {
     width: 95%;
     background: #ff7b02;

@@ -1,21 +1,21 @@
 {
     "sdata": [{
 
-            "name": "Student Data",
+          
             "slno": "1",
             "fname": "viswanath",
             "lname": "Madineni",
-            "des": "Software Developer",
+            "course": "Degree",
             "phone": "+91 7093775308",
             "email": "viswanathmdn@gmail.com"
 
         },
         {
-            "name": "Student Data",
+            
             "slno": "2",
             "fname": "ravi",
             "lname": "Potthuru",
-            "des": "Software Developer",
+            "course": "Btech",
             "phone": "+91 9182927494",
             "email": "viswanath.ui1029@gmail.com"
 

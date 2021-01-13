@@ -86,29 +86,7 @@ body, html {
     text-shadow: 0 0 2px #ccc;
     margin: 15px 0px 15px 0px;
 }
-.clr1, .clr2, .clr3, .clr4{
-    border-radius: 5px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    margin-bottom: 10px;
-}
-.clr1 span, .clr2 span, .clr3 span, .clr4 span {
-    font-size: 25px;
-}
-.clr1{
-    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%) !important
-}
-.clr2{
-    background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%) !important;
-}
-.clr3{
-    background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%) !important;
-}
-.clr4{
-    background-image: linear-gradient(to right, #434343 0%, black 100%) !important;
-}
+
 .sidebar-menu{
     background-color: #673AB7;
     padding: 0px !important;

@@ -1,76 +1,99 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@polymer/app-route/app-route.js';
-import '@polymer/iron-ajax/iron-ajax.js';
-import '@polymer/paper-button/paper-button.js';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import './shared-styles.js';
+import '@polymer/polymer/lib/elements/array-selector.js';
 
 
-
-
-/**
- * @customElement
- * @polymer
- * This component (hotels.js) is used as a page in the application for displaying the hotels listing.
- * This is the first page that is displayed in the application after the user logs in.
- */
 class StudentList extends PolymerElement {
-  static get template() {
-    return html`
-    <link rel="stylesheet" href="../css/style-tech.css">
-        <style>
-            
-        </style>
+    
+    static get template() {
+        return html `
 
-        <iron-ajax
-          auto
-          id="hotels_list_ajax"
-          url="src/studentlist.json"
-          params='{"part":"snippet", "q":"polymer", "type": "json"}'
-          handle-as="json"
-          on-response="handleDataResponse"
-          debounce-duration="300">
-        </iron-ajax>
+    <script src="/node_modules/material-design-lite/material.min.js"></script>
+    
+
+      <style include="shared-styles">
+        :host {
+          display: block;
+          padding: 10px;
+        }
+      </style>
       
-        <app-header reveals class="etitle">
-            <app-toolbar>
-            <div main-title >Student-List </div>
-            </app-toolbar>
-            
-        </app-header>
-
-        <div class="div_student_list">
-            
-            <dom-repeat items="[[studentlist]]">
-              <template strip-whitespace="">
-              <div class="card">
-                
-                <div class="div_student_data">
-                    <h2 id="titv">[[item.name]]</h2>
-                    <span>FirstName:&nbsp&nbsp[[item.fname]]</span><br/>
-                    <span>LastName:&nbsp&nbsp[[item.lname]]</span><br/>
-                    <span>Description:&nbsp&nbsp[[item.des]]</span><br/>
-                    <span>Phone:&nbsp&nbsp[[item.phone]]</span><br/>
-                    <span>Email:&nbsp&nbsp[[item.email]]</span>
-                </div>
-              </div>
+      <!--- title start -->
+      <div class="card">
+        <h1>Student List</h1> 
+      </div>
+      <!--- title end -->
+      
+      <div class="card">
+        <div class="mdl-grid">
+          <div class="table-responsive">
+          <!--- Table start -->
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+              <thead>
+                <tr>
+                  <th scope="col" class="mdl-data-table__cell--non-numeric">S.No</th>
+                  <th scope="col" class="mdl-data-table__cell--non-numeric">First Name</th>
+                  <th scope="col" class="mdl-data-table__cell--non-numeric">Last Name</th>
+                  <th scope="col" class="mdl-data-table__cell--non-numeric">Branch</th>
+                  <th scope="col" class="mdl-data-table__cell--non-numeric">Phone Number</th>
+                  <th scope="col" class="mdl-data-table__cell--non-numeric">Email</th>
+                  <th scope="col" class="mdl-data-table__cell--non-numeric">Action</th>
+                </tr>
+              </thead>
+              <!--- Dom Repeat started -->
+              <template is="dom-repeat" items="{{user.stulist}}" id="employeeList" > 
+                <tbody>
+                  <tr class="item">
+                    <td class="mdl-data-table__cell--non-numeric">[[item.0]]</td>
+                    <td class="mdl-data-table__cell--non-numeric">[[item.1]]</td>
+                    <td class="mdl-data-table__cell--non-numeric">[[item.2]]</td>
+                    <td class="mdl-data-table__cell--non-numeric">[[item.3]]</td>
+                    <td class="mdl-data-table__cell--non-numeric">[[item.4]]</td>
+                    <td class="mdl-data-table__cell--non-numeric">[[item.5]]</td>
+                    <td><button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" on-click="delete" >Delete </button> </td>
+                  </tr>
+                </tbody>
               </template>
-            </dom-repeat>
-          
+              <!--- Dom Repeat End -->
+                <array-selector id="selector" items="{{user.stulist}}" selected="{{selected}}" multi toggle></array-selector>
+            </table>
+            <!--- Table end -->
+          </div>
         </div>
+      </div>
+     
     `;
-  }
-  static get properties() {
-    return {
-      studentlist: {
-        type: Array,
-        value: []
-      }
-    };
+    }
+    static get properties() {
+      return {
+          user: {
+              type: Object,
+              value: function() {
+                  // Get array data from Local Storage 
+                  var stulist = JSON.parse(window.localStorage.getItem('All-Entries'));
+                  return {
+                      stulist
+                  };
+              }
+          }
+      };
   }
 
-  handleDataResponse(event, request){
-    var response = request.response;  
-    this.studentlist = response.sdata;
-  }
+
+    // Data delete from local storage
+    delete(e) {
+        const index = e.model.__data.index;
+        var item = e.model.__data.item;
+        var data = JSON.parse(window.localStorage.getItem('All-Entries'));
+        console.log(data);
+        data.splice(index, 1);
+        window.localStorage.setItem("All-Entries", JSON.stringify(data));
+        window.alert("Student Deleted Sucessfully");
+        window.location.reload();
+    }
+
+
+
 }
 
 window.customElements.define('student-list', StudentList);

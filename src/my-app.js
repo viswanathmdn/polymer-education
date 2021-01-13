@@ -10,13 +10,17 @@ import '@polymer/app-route/app-location.js';
 import '@polymer/app-route/app-route.js';
 import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-selector/iron-selector.js';
-import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
+import '@polymer/iron-icons/iron-icons.js';
+import '@polymer/iron-icon/iron-icon.js';
+
+
 import '@polymer/paper-card/paper-card.js';
-import '@polymer/iron-ajax/iron-ajax.js';
+
+
 
 import './shared-styles.js';
-import './my-icons.js';
+
 
 
 
@@ -34,13 +38,13 @@ class MainApp extends PolymerElement {
       </style>
       
 
-      <!--- Applocation component start -->
+      <!--- Application component start -->
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
       <!--- Applocation component end -->
 
       <!--- Approute component start -->
       <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-      <!--- Applocation component end -->
+      <!--- Application component end -->
 
       <!--- Appdrawer Layout component start -->
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
@@ -49,18 +53,21 @@ class MainApp extends PolymerElement {
           <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
             
               <app-toolbar><div >
+              <paper-icon-button icon="icons:menu" drawer-toggle=""></paper-icon-button>
                 <i id="edu">Education</i>
               </div>
               </app-toolbar>
             
 
               <!-- Iron Selecctor Start -->
-              <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation" role="Navigation" tabindex="0">
-                <a name="dashboard" role="Dashboard" href="[[rootPath]]dashboard"> Dashboard</a>
-                <a name="technical" role="Technical" href="[[rootPath]]technical"> Technical</a>
-                <a name="non-technical" role="Non Technical" href="[[rootPath]]non-technical"> Non-Technical</a>
-                <a name="data" role="Student List" href="[[rootPath]]data"> Student-List</a>
-                <a name="login" href="[[rootPath]]login" role="Logout">Logout</a>
+              <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" >
+                <a name="dashboard"  href="[[rootPath]]dashboard"> Dashboard</a>
+                <a name="technical"  href="[[rootPath]]technical"> Technical</a>
+                <a name="non-technical"  href="[[rootPath]]non-technical"> Non-Technical</a>
+                
+                <a name="register"  href="[[rootPath]]register"> Register</a>
+                <a name="data"  href="[[rootPath]]data"> Student-List</a>
+                <a name="login" href="[[rootPath]]login" >Logout</a>
               </iron-selector>
               <!-- Iron Selecctor End -->
 
@@ -73,9 +80,9 @@ class MainApp extends PolymerElement {
                 <!-- App Header Start -->
                 <app-header id="appheader" slot="header" condenses="" reveals="" effects="waterfall">
                   <app-toolbar>
-                    <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
+                    <paper-icon-button icon="icons:menu" drawer-toggle=""></paper-icon-button>
 
-                    <div main-title="" class="mobile-logo" role="Mobile Logo">
+                    <div main-title="" class="mobile-logo" >
                     <h1 style="color:white">Education</h1>
                     </div>
                   </app-toolbar>
@@ -83,13 +90,14 @@ class MainApp extends PolymerElement {
                 <!-- App Header End -->
 
                 <!-- Iron Pages Start -->
-                <iron-pages selected="[[page]]" attr-for-selected="name" role="main page">
+                <iron-pages selected="[[page]]" attr-for-selected="name" >
                   <login-app name="login"></login-app>
                   <my-app name="dashboard"></my-app>
                   <my-technical name="technical"></my-technical>
                   <non-technical name="non-technical"></non-technical>
                   <my-view404 name="view404"></my-view404>
                   <student-list name="data"></student-list>
+                  <my-register  name="register"></my-register>
                 </iron-pages>
                 <!-- Iron Pages End -->
 
@@ -140,6 +148,7 @@ class MainApp extends PolymerElement {
                     </p>
                     <p><a target="_blank" href="https://www.arpansa.gov.au/regulation-and-licensing/safety-security-transport/holistic-safety/non-technical-skills#:~:text=Non%2DTechnical%20Skills%20('NTS,%3B%20and%20situation%2Dawareness%20skills.&text=However%2C%20they%20complement%20these%20technical,them%20more%20efficient%20and%20effective.">
                     more...</a></p>
+                    
                 </div>
                 </div>
 
@@ -192,7 +201,7 @@ class MainApp extends PolymerElement {
 
         if (!page) {
             this.page = 'login';
-        } else if (['login', 'dashboard', 'technical', 'non-technical','data'].indexOf(page) !== -1) {
+        } else if (['login', 'dashboard', 'technical', 'non-technical','register','data'].indexOf(page) !== -1) {
             this.page = page;
         } else {
             this.page = 'view404';
@@ -229,6 +238,12 @@ class MainApp extends PolymerElement {
                 this.$.paperCard.style.display = "none";
 
                 break;
+                
+            case 'register':
+              import('./my-register.js');
+             
+              this.$.paperCard.style.display = "none";
+              break;
 
             case 'data':
               import('./student-list.js');

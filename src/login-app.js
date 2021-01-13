@@ -4,13 +4,13 @@ import '@polymer/iron-form/iron-form.js';
 import '@polymer/app-route/app-location.js';
 import '@polymer/app-route/app-route.js';
 import './style-element.js';
+import '@polymer/paper-button/paper-button.js';
 
 class LoginApp extends PolymerElement {
 
     static get template() {
             return html `
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+           
       <style include="style-element">
       
       </style>
@@ -27,7 +27,7 @@ class LoginApp extends PolymerElement {
      
     <div id="login">
       <section>
-        <div class="login-area" style="margin-left:10%" >
+        <div class="login-area"  >
             <!-- Logo Here --->
             <h1><i style="color:blue;">Login-Here</i></h1>
             
@@ -38,19 +38,20 @@ class LoginApp extends PolymerElement {
            
             <!-- Login Form Start --->  
             <iron-form>  
-                <form id="myForm" is = "iron-form" method="post" action="/form/handler" tabindex="0">
-                    <paper-input role="Enter Username" id="username" char-counter maxlength="10" label="Enter Username" required 
+                <form id="myForm" is = "iron-form"   >
+                    <paper-input   id="username"  maxlength="10" label="Enter Username" required 
                     auto-validate error-message="Username must be filled out"></paper-input>
 
-                    <paper-input role="Enter Password" type="password" id="password" char-counter maxlength="10" label="Enter Password" 
+                   <paper-input   type="password" id="password"  maxlength="10" label="Enter Password" 
                     required auto-validate error-message="Password must be filled out"></paper-input>
 
-                    <input id="submitForValidation" role="Submit" type="submit" required 
-                    Label="Enter the Valid Username or Password" value="Login" on-click="userform" class="btn">
+                    <paper-button raised   id="submitForValidation" required
+                    class="btn" on-click="userform">Login</paper-button>
                     <a href="">Forgot Password</a>
                 </form>
             </iron-form>
-            <!-- Login Form End --->       
+            <!-- Login Form End ---> 
+           
         </div>
       </section>
     </div>
