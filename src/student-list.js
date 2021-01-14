@@ -1,4 +1,5 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import '@polymer/iron-ajax/iron-ajax.js';
 import './shared-styles.js';
 import '@polymer/polymer/lib/elements/array-selector.js';
 
@@ -23,6 +24,14 @@ class StudentList extends PolymerElement {
         <h1>Student List</h1> 
       </div>
       <!--- title end -->
+
+      <!-- iron-ajax start here-->
+      <iron-ajax
+          auto
+          url="src/studentlist.json"
+         handle-as="json"
+          on-response="handleStudentResponse">
+        </iron-ajax>
       
       <div class="card">
         <div class="mdl-grid">
@@ -66,6 +75,10 @@ class StudentList extends PolymerElement {
     }
     static get properties() {
       return {
+        studlist: {
+          type: Array,
+          value: []
+        },
           user: {
               type: Object,
               value: function() {
@@ -91,7 +104,11 @@ class StudentList extends PolymerElement {
         window.alert("Student Deleted Sucessfully");
         window.location.reload();
     }
-
+    handleStudentResponse(event, request){
+      var response = request.response;  
+      this.studlist = response.sdata;
+      console.log(this.studlist);
+    }
 
 
 }
