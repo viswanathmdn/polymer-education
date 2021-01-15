@@ -39,10 +39,11 @@ class Register extends PolymerElement {
         <!--- Iron Form Start--->
 
         <div >
-        <h3 id="svalid"></h3>
-      </div>
+          <h3 id="svalid"></h3>
+        </div>
+
         <iron-form>
-          <form is = "iron-form" id = "empforms"  name="empforms">
+          <form  id = "empforms"  name="empforms">
         
               <paper-input label="Enter First Name" name="fname" id="fname" required auto-validate 
                error-message="First Name must be filled out"></paper-input>
@@ -50,7 +51,7 @@ class Register extends PolymerElement {
               <paper-input label="Enter Last Name" name="lname" id="lname" required auto-validate 
               error-message="Last Name must be filled out"></paper-input>
      
-              <paper-input label="Enter course" name="designation" id="des" required auto-validate 
+              <paper-input label="Enter course" name="course" id="des" required auto-validate 
               error-message="Course must be filled out"></paper-input>
 
               <paper-input label="Enter phone number" name="phone" id="phone" required  
@@ -62,7 +63,7 @@ class Register extends PolymerElement {
              
         
               
-              <paper-button raised     on-click="addemp" class="btnr">Register</paper-button>
+              <paper-button raised on-click="addemp" class="btnr">Register</paper-button>
 
 
           </form>
@@ -74,21 +75,21 @@ class Register extends PolymerElement {
     `;
     }
     addemp() {
-        // get value from form
+        /**  get value from */
         var fname = this.$.fname.value;
         var lname = this.$.lname.value;
         var des = this.$.des.value;
         var phone = this.$.phone.value;
         var email = this.$.email.value;
 
-        // Storing array data to local storage
-        // Nullchecking
+        /**  Storing array data to local storage */
+        /**  Nullchecking */
         if (fname != "" && lname != "" && des != "" && phone != "" && email != "") {
             var existingEntries = JSON.parse(localStorage.getItem("All-Entries"));
             if (existingEntries == null) existingEntries = [];
             var stulist = [];
 
-            //Incrementing SL no and pushing in the array
+            /** Incrementing SL no and pushing in the array */
             var slno = existingEntries.length + 1;
             stulist.push(slno, fname, lname, des, phone, email)
             window.localStorage.setItem('Current-Entry-List', JSON.stringify(stulist));

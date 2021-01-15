@@ -82,7 +82,7 @@ class StudentList extends PolymerElement {
           user: {
               type: Object,
               value: function() {
-                  // Get array data from Local Storage 
+                  /**  Get array data from Local Storage */
                   var stulist = JSON.parse(window.localStorage.getItem('All-Entries'));
                   return {
                       stulist
@@ -93,7 +93,7 @@ class StudentList extends PolymerElement {
   }
 
 
-    // Data delete from local storage
+    /**  Data delete from local storage */
     delete(e) {
         const index = e.model.__data.index;
         var item = e.model.__data.item;
@@ -104,6 +104,8 @@ class StudentList extends PolymerElement {
         window.alert("Student Deleted Sucessfully");
         window.location.reload();
     }
+    
+    /**Here to print json data to the console */
     handleStudentResponse(event, request){
       var response = request.response;  
       this.studlist = response.sdata;

@@ -75,7 +75,7 @@ class LoginApp extends PolymerElement {
             return user;
             
         }else{
-            this.$.nvalid.innerHTML = " Invalid Username and password";
+            this.$.nvalid.innerHTML = " Invalid Credentials";
             this.$.nvalid.style.color="red";
             
         }

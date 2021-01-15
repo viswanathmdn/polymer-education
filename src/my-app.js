@@ -13,15 +13,8 @@ import '@polymer/iron-selector/iron-selector.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/iron-icons/iron-icons.js';
 import '@polymer/iron-icon/iron-icon.js';
-
-
 import '@polymer/paper-card/paper-card.js';
-
-
-
 import './shared-styles.js';
-
-
 
 
 
@@ -52,7 +45,8 @@ class MainApp extends PolymerElement {
           <!-- Naviigation Start -->
           <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
             
-              <app-toolbar><div >
+              <app-toolbar>
+              <div >
               <paper-icon-button icon="icons:menu" drawer-toggle=""></paper-icon-button>
                 <i id="edu">Education</i>
               </div>
@@ -64,14 +58,13 @@ class MainApp extends PolymerElement {
                 <a name="dashboard"  href="[[rootPath]]dashboard"> Dashboard</a>
                 <a name="technical"  href="[[rootPath]]technical"> Technical</a>
                 <a name="non-technical"  href="[[rootPath]]non-technical"> Non-Technical</a>
-                
                 <a name="register"  href="[[rootPath]]register"> Register</a>
                 <a name="data"  href="[[rootPath]]data"> Student-List</a>
                 <a name="login" href="[[rootPath]]login" >Logout</a>
               </iron-selector>
               <!-- Iron Selecctor End -->
 
-          </app-drawer>
+        </app-drawer>
           <!-- Navigation End -->
 
           <!-- Main content Start -->
@@ -101,10 +94,6 @@ class MainApp extends PolymerElement {
                 </iron-pages>
                 <!-- Iron Pages End -->
 
-           
-
-
-                
                 <div id="paperCard">
                 
                 <!-- Header -->
@@ -116,8 +105,6 @@ class MainApp extends PolymerElement {
                 <div class="header">
                 <img src="images/1.jfif"  style="width:100%;height:400px">
                 </div>
-
-
 
                 <!-- The flexible grid (content) -->
                 <div class="row">
@@ -152,20 +139,12 @@ class MainApp extends PolymerElement {
                 </div>
                 </div>
 
-              
-
                 <!-- Footer -->
                 <div class="footer">
                 <p>2020 - 2021 Copyrights by <a href="#">Viswa</a>. Designed & Maintanined by <a href="#">Viswa</a></p>
                 </div>
 
                 </div>
-               
-                
-               
-                  
-             
-
 
           </app-header-layout>
           <!-- Main content End -->
